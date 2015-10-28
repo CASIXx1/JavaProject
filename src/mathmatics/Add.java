@@ -3,8 +3,9 @@ package mathmatics;
 import java.util.Scanner;
 
 public class Add {
-	public static void main(String[] args) {
-		int num1,num2,ans;
+		private int num1,num2,ans;
+		
+		public void X_Y(){ 
 		Scanner sc = new Scanner(System.in);
 		System.out.print("x:");
 		num1 = sc.nextInt();
@@ -12,5 +13,5 @@ public class Add {
 		num2 = sc.nextInt();
 		ans = num1 + num2;
 		System.out.println("x + y = " + ans);
-	}
+		}
 }

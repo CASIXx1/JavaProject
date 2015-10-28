@@ -1,4 +1,4 @@
-package number1;
+package naturaLanguageProcessing;
 
 public class Practice1 {
 	public static void main(String[] args) {

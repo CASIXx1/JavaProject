@@ -1,4 +1,4 @@
-package mathmatics;
+package naturaLanguageProcessing;
 
 public class NameList {
 	String name1 = "tanaka";
