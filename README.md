@@ -1,6 +1,14 @@
 # JavaProject
-Java practice
-javaを使って、プロダクトを作成します。
+javaを使って、計算機を作成します。
 
-JAVA SEを使用
+### IDE
+---
+Eclipse 4.4 Luna
+
+### Java
+---
+JAVA SE7
+
+### Memo
+---
 コーディング規約などの置き場所を考え中
