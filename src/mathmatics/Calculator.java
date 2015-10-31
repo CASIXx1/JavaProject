@@ -18,4 +18,18 @@ public class Calculator {
 			System.out.println("X - Y = " + ans);
 			return ans;
 		}
+		
+		public int multiplication(int num1, int num2){ 
+			Scanner sc = new Scanner(System.in);
+			ans = num1 * num2;
+			System.out.println("X * Y = " + ans);
+			return ans;
+		}
+		
+		public int division(int num1, int num2){ 
+			Scanner sc = new Scanner(System.in);
+			ans = num1 / num2;
+			System.out.println("X / Y = " + ans);
+			return ans;
+		}
 }
