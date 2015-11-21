@@ -7,16 +7,20 @@ public class CalculatorMain {
 		Scanner sc = new Scanner(System.in);
 		Calculator calTest = new Calculator();
 		
-		int num1, num2, calcType;
-		System.out.print("計算の種類は何ですか？");
-		calcType = sc.nextInt();
+		int num1, num2;
+		int operatorLocate;
+		String calcString; //計算式
+		System.out.println("計算式を入力して下さい");
+		calcString = sc.nextLine();
+		CalcStringAnalytics csa = new CalcStringAnalytics(calcString);
+		operatorLocate = csa.operatorAnalitics();
 		
-		System.out.print("X : ");
-		num1 = sc.nextInt();
-		System.out.print("Y : ");
-		num2 = sc.nextInt();
+		num1 = Integer.parseInt(calcString.substring(0, operatorLocate - 1).trim());
+		num2 = Integer.parseInt(calcString.substring(operatorLocate + 1).trim());
+		System.out.println("X : " + num1);
+		System.out.println("Y : " + num2);
 		
-		switch (calcType) {
+		switch (csa.getOperatorType()) {
 		case 1:
 			calTest.add(num1, num2);
 			break;
