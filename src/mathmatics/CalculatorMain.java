@@ -7,7 +7,7 @@ public class CalculatorMain {
 		Scanner sc = new Scanner(System.in);
 		Calculator calTest = new Calculator();
 		
-		int num1, num2;
+		double num1, num2;
 		int operatorLocate;
 		String calcString; //計算式
 		System.out.println("計算式を入力して下さい");
@@ -15,8 +15,9 @@ public class CalculatorMain {
 		CalcStringAnalytics csa = new CalcStringAnalytics(calcString);
 		operatorLocate = csa.operatorAnalitics();
 		
-		num1 = Integer.parseInt(calcString.substring(0, operatorLocate - 1).trim());
-		num2 = Integer.parseInt(calcString.substring(operatorLocate + 1).trim());
+		num1 = Double.parseDouble(calcString.substring(0, operatorLocate).trim());
+		num2 = Double.parseDouble(calcString.substring(operatorLocate + 1).trim());
+		
 		System.out.println("X : " + num1);
 		System.out.println("Y : " + num2);
 		
