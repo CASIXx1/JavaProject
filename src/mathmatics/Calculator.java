@@ -3,27 +3,33 @@ package mathmatics;
 public class Calculator {
 		private double ans;
 		
-		public double add(double num1, double num2){ 
-			ans = num1 + num2;
-			System.out.println("X + Y = " + ans);
-			return ans;
+		public Calculator(double ans) {
+			this.ans = ans;
 		}
 		
-		public double subtract(double num1, double num2){ 
-			ans = num1 - num2;
-			System.out.println("X - Y = " + ans);
-			return ans;
+		public void add(double num1){ 
+			ans += num1;
 		}
 		
-		public double multiplication(double num1, double num2){ 
-			ans = num1 * num2;
-			System.out.println("X * Y = " + ans);
-			return ans;
+		public void subtract(double num1){ 
+			ans -= num1;
 		}
 		
-		public double division(double num1, double num2){ 
-			ans = num1 / num2;
-			System.out.println("X / Y = " + ans);
+		public void multiplication(double num1){ 
+			ans *= num1;
+		}
+		
+		public void division(double num1){ 
+			ans /= num1;
+		}
+
+		public double getAns() {
 			return ans;
 		}
+
+		public void setAns(double ans) {
+			this.ans = ans;
+		}
+		
+		
 }

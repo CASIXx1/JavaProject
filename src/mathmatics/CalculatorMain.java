@@ -1,43 +1,59 @@
 package mathmatics;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class CalculatorMain {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		Calculator calTest = new Calculator();
-		
-		double num1, num2;
-		int operatorLocate;
-		String calcString; //計算式
-		System.out.println("計算式を入力して下さい");
-		calcString = sc.nextLine();
-		CalcStringAnalytics csa = new CalcStringAnalytics(calcString);
-		operatorLocate = csa.operatorAnalitics();
-		
-		num1 = Double.parseDouble(calcString.substring(0, operatorLocate).trim());
-		num2 = Double.parseDouble(calcString.substring(operatorLocate + 1).trim());
-		
-		System.out.println("X : " + num1);
-		System.out.println("Y : " + num2);
-		
-		switch (csa.getOperatorType()) {
-		case 1:
-			calTest.add(num1, num2);
-			break;
-		case 2:
-			calTest.subtract(num1, num2);
-			break;
-		case 3:
-			calTest.multiplication(num1, num2);
-			break;
-		case 4:
-			calTest.division(num1, num2);
-			break;
 
-		default:
-			System.out.println("1~4を入力して下さい");
-			break;
+	public static void main(String[] args) {
+		double x = 0;
+		Calculator calcTest = null;
+
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));){
+			String s;
+			while(!(s = reader.readLine()).equals("exit")) { //最初の数値を入力
+				Result r = CalcStringAnalytics.firstInput(s);
+				if (r != null) {
+					x = r.getOperand();
+					calcTest = new Calculator(x);
+					break;
+				} else {
+					System.out.println("正しく入力してください");
+				}
+			}
+			
+			while(!(s = reader.readLine()).equals("exit")) {
+				Result r = CalcStringAnalytics.parseInput(s);
+				if (r != null) {
+					x = r.getOperand();
+					double oldAns = calcTest.getAns();
+					
+					switch (r.getOperator()) {
+					case "+":
+						calcTest.add(x);
+						System.out.printf("%.3f + %.3f = %.3f\n",oldAns,x,calcTest.getAns());
+						break;
+					case "-":
+						calcTest.subtract(x);
+						System.out.printf("%.3f - %.3f = %.3f\n",oldAns,x,calcTest.getAns());
+						break;
+					case "*":
+						calcTest.multiplication(x);
+						System.out.printf("%.3f * %.3f = %.3f\n",oldAns,x,calcTest.getAns());
+						break;
+					case "/":
+						calcTest.division(x);
+						System.out.printf("%.3f / %.3f = %.3f\n",oldAns,x,calcTest.getAns());
+						break;
+					}
+				} 
+				else {
+					System.out.println("正しく入力してください");
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
